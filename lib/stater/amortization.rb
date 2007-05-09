@@ -1,4 +1,9 @@
 Struct.new('Payment', :payment_number, :payment, :principal, :interest, :remaining_principal)
+class NilClass
+  def to_d
+    nil
+  end
+end
 
 module Stater
   class Amortization
@@ -9,8 +14,7 @@ module Stater
     
     def initialize(principal = nil, periodic_rate = nil, periods = nil)
       @schedule = []
-      @principal, @periodic_rate, @periods = principal, periodic_rate, periods
-      
+      @principal, @periodic_rate, @periods = principal.to_d, periodic_rate.to_d, periods
     end
     
     # Calculates the payment when given the principal amount and interest rate
@@ -19,7 +23,7 @@ module Stater
       y = ((1 + @periodic_rate)**@periods) - 1
       result = x / y
       
-      BigDecimal(result.to_s).round(2).to_f
+      BigDecimal(result.to_s).round(2) #.to_f
     end
     
     def schedule
@@ -27,7 +31,7 @@ module Stater
       
       payments = []
       pmt = payment
-      remaining_principal = @principal.to_d
+      remaining_principal = @principal
       payment_number = 0
       while remaining_principal > 0 do
         payment_number += 1
