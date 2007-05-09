@@ -5,20 +5,18 @@ module Stater
     class << self
       # Calculates the future value
       #   pv = present value
-      #   r = nominal interest rate
-      #   y = years
-      #   n = periods per year
-      def fv(pv, r, y, n)
-        pv * ((1 + (r / n))**(y * n))
+      #   r = periodic interest rate
+      #   n = number of compounding periods
+      def fv(pv, r, n)
+        pv * ((1 + r)**n)
       end
       
       # Calulates the present value
       #   fv = future value
-      #   r = nominal interest rate
-      #   y = years
-      #   n = periods per year
-      def pv(fv, r, y, n)
-        fv / ((1 + (r / n))**(y * n))
+      #   r = periodic interest rate
+      #   n = number of compounding periods
+      def pv(fv, r, n)
+        fv / ((1 + r)**n)
       end
       
       # Calculates the nomical interest rate

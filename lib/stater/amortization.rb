@@ -1,24 +1,46 @@
+Struct.new('Payment', :payment_number, :payment, :principal, :interest, :remaining_principal)
+
 module Stater
   class Amortization
     
-    class << self
-      # Calculates the payment when given the principal amount and interest rate
-      def payment_amount(principal_amount, interest_rate, number_of_payments)
-        x = interest_rate * principal_amount * ((1 + interest_rate) ** number_of_payments)
-        y = ((1 + interest_rate) ** number_of_payments) - 1
-        return BigDecimal((x / y).to_s).round(2).to_f
-      end
+    attr_accessor :principal
+    attr_accessor :periodic_rate
+    attr_accessor :periods
     
-      # Calculates the principal when given the periodic payment and interest rate
-      def principal(payment_amount, interest_rate, number_of_payments)
+    def initialize(principal = nil, periodic_rate = nil, periods = nil)
+      @schedule = []
+      @principal, @periodic_rate, @periods = principal, periodic_rate, periods
       
-      end
-    
-      # Calculates the annual interest rate when given the principal amount and periodic payment
-      def interest(principal_amount, payment_amount, number_of_payments)
-      
-      end
     end
+    
+    # Calculates the payment when given the principal amount and interest rate
+    def payment
+      x = @periodic_rate * @principal * ((1 + @periodic_rate)**@periods)
+      y = ((1 + @periodic_rate)**@periods) - 1
+      result = x / y
+      
+      BigDecimal(result.to_s).round(2).to_f
+    end
+    
+    def schedule
+      # return [] if @principal.nil? or @period_rate.nil? or @periods.nil?
+      
+      payments = []
+      pmt = payment
+      remaining_principal = @principal.to_d
+      payment_number = 0
+      while remaining_principal > 0 do
+        payment_number += 1
+        
+        interest = remaining_principal * @periodic_rate
+        principal = pmt - interest
+        remaining_principal = remaining_principal - principal
+        
+        payments << Struct::Payment.new(payment_number, pmt, principal, interest, remaining_principal)
+      end
+      payments
+    end
+    
     
   end
 end
