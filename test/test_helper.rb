@@ -26,9 +26,9 @@ class Test::Unit::TestCase
     schedule.each_with_index do |line, index|
       assert_equal control_schedule[index].payment, line.payment.to_s('F').gsub(/\.(\d{1})$/, '.\10').gsub(/^0/, ''),
         "payment at amortization line: #{index}"
-      assert_equal control_schedule[index].interest, line.interest.to_s('F').gsub(/\.(\d{1})$/, '.\10').gsub(/^0/, ''),
+      assert_equal control_schedule[index].interest_paid, line.interest_paid.to_s('F').gsub(/\.(\d{1})$/, '.\10').gsub(/^0/, ''),
         "interest at amortization line #{index}"
-      assert_equal control_schedule[index].principal, line.principal.to_s('F').gsub(/\.(\d{1})$/, '.\10').gsub(/^0/, ''),
+      assert_equal control_schedule[index].principal_paid, line.principal_paid.to_s('F').gsub(/\.(\d{1})$/, '.\10').gsub(/^0/, ''),
         "principal at amortization line #{index}"
       assert_equal control_schedule[index].principal_balance, line.principal_balance.to_s('F').gsub(/\.(\d{1})$/, '.\10').gsub(/^0/, ''),
         "principal_balance at amortization line #{index}"

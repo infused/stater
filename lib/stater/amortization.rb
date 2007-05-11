@@ -1,4 +1,4 @@
-Struct.new('Payment', :payment_number, :payment, :principal, :interest, :principal_balance)
+Struct.new('Payment', :number, :payment, :principal_paid, :interest_paid, :principal_balance)
 
 class NilClass
   def to_d
@@ -22,28 +22,28 @@ module Stater
     end
     
     # Calculates the payment when given the principal amount and interest rate
-    def calculate_payment
-      x = @periodic_rate * @principal * ((1 + @periodic_rate)**@periods)
-      y = ((1 + @periodic_rate)**@periods) - 1
-      result = x / y
+    def calculate_payment(periodic_rate = @periodic_rate, periods = @periods)
+      raise ArgumentError, "periodic_rate should be a BigDecimal" unless periodic_rate.is_a?(BigDecimal)
+      raise ArgumentError, "periods should be a Fixnum" unless periods.is_a?(Fixnum)
       
-      BigDecimal(result.to_s).round(2) #.to_f
+      x = periodic_rate * principal * ((1 + periodic_rate)**periods)
+      y = ((1 + periodic_rate)**periods) - 1      
+      (x / y).round(2)
     end
     
     def schedule
       return [] if @principal.nil? or @periodic_rate.nil? or @periods.nil?
       
       payments = []
-      pmt = calculate_payment
+      payment = calculate_payment
       principal_balance = @principal
-      # p "payment, principal, interest, balance"
+
       1.upto(@periods) do |payment_number|
         interest_paid = (principal_balance * @periodic_rate).round(2)
-        principal = pmt - interest_paid
-        principal_balance = principal_balance - principal
+        principal_paid = payment - interest_paid
+        principal_balance = principal_balance - principal_paid
         
-        # p "#{pmt.to_s('F')}, #{principal.to_s('F')}, #{interest_paid.to_s('F')}, #{principal_balance.to_s('F')}"
-        payments << Struct::Payment.new(payment_number, pmt, principal.round(2), interest_paid, principal_balance.round(2))
+        payments << Struct::Payment.new(payment_number, payment, principal_paid, interest_paid, principal_balance)
       end
       payments
     end
