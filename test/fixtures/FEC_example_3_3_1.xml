@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='windows-1252'?>
 <TValueAmortizationSchedule>
-	<Rounding>1100</Rounding>
+	<Rounding>0</Rounding>
 	<Compounding>6</Compounding>
 	<NominalAnnualRate>0.08</NominalAnnualRate>
 	<APR>0.08</APR>
-	<FinanceCharge>1800434000</FinanceCharge>
+	<FinanceCharge>1800435100</FinanceCharge>
 	<AmountFinanced>2500000000</AmountFinanced>
-	<TotalOfPayments>4300434000</TotalOfPayments>
+	<TotalOfPayments>4300435100</TotalOfPayments>
 	<AmortizationLine>
 		<AmortizationLineType>8</AmortizationLineType>
 		<Date>05/08/2007</Date>
@@ -3526,9 +3526,27 @@
 		<Payment1Amount>23891300</Payment1Amount>
 		<Payment2Amount></Payment2Amount>
 		<Payment3Amount></Payment3Amount>
-		<InterestAccrued>157100</InterestAccrued>
-		<InterestPaid>157100</InterestPaid>
-		<PrincipalPaid>23734200</PrincipalPaid>
+		<InterestAccrued>158200</InterestAccrued>
+		<InterestPaid>158200</InterestPaid>
+		<PrincipalPaid>23733100</PrincipalPaid>
+		<UnpaidInterestBalance>0</UnpaidInterestBalance>
+		<PrincipalBalance>1100</PrincipalBalance>
+		<TotalBalance>1100</TotalBalance>
+		<RateChangeRate></RateChangeRate>
+		<RateChangeCompounding>13</RateChangeCompounding>
+	</AmortizationLine>
+	<AmortizationLine>
+		<AmortizationLineType>9</AmortizationLineType>
+		<Date>06/08/2022</Date>
+		<Loan1Amount></Loan1Amount>
+		<Loan2Amount></Loan2Amount>
+		<Loan3Amount></Loan3Amount>
+		<Payment1Amount>1100</Payment1Amount>
+		<Payment2Amount></Payment2Amount>
+		<Payment3Amount></Payment3Amount>
+		<InterestAccrued>0</InterestAccrued>
+		<InterestPaid>0</InterestPaid>
+		<PrincipalPaid>1100</PrincipalPaid>
 		<UnpaidInterestBalance>0</UnpaidInterestBalance>
 		<PrincipalBalance>0</PrincipalBalance>
 		<TotalBalance>0</TotalBalance>
@@ -3541,11 +3559,11 @@
 		<Loan1Amount>0</Loan1Amount>
 		<Loan2Amount>0</Loan2Amount>
 		<Loan3Amount>0</Loan3Amount>
-		<Payment1Amount>119456500</Payment1Amount>
+		<Payment1Amount>119457600</Payment1Amount>
 		<Payment2Amount>0</Payment2Amount>
 		<Payment3Amount>0</Payment3Amount>
-		<InterestAccrued>2351300</InterestAccrued>
-		<InterestPaid>2351300</InterestPaid>
+		<InterestAccrued>2352400</InterestAccrued>
+		<InterestPaid>2352400</InterestPaid>
 		<PrincipalPaid>117105200</PrincipalPaid>
 		<UnpaidInterestBalance>0</UnpaidInterestBalance>
 		<PrincipalBalance>0</PrincipalBalance>
@@ -3555,15 +3573,15 @@
 	</AmortizationLine>
 	<AmortizationLine>
 		<AmortizationLineType>52</AmortizationLineType>
-		<Date>05/31/2022</Date>
+		<Date>06/30/2022</Date>
 		<Loan1Amount>2500000000</Loan1Amount>
 		<Loan2Amount>0</Loan2Amount>
 		<Loan3Amount>0</Loan3Amount>
-		<Payment1Amount>4300434000</Payment1Amount>
+		<Payment1Amount>4300435100</Payment1Amount>
 		<Payment2Amount>0</Payment2Amount>
 		<Payment3Amount>0</Payment3Amount>
-		<InterestAccrued>1800434000</InterestAccrued>
-		<InterestPaid>1800434000</InterestPaid>
+		<InterestAccrued>1800435100</InterestAccrued>
+		<InterestPaid>1800435100</InterestPaid>
 		<PrincipalPaid>2500000000</PrincipalPaid>
 		<UnpaidInterestBalance>0</UnpaidInterestBalance>
 		<PrincipalBalance>0</PrincipalBalance>
