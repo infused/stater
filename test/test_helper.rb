@@ -13,10 +13,11 @@ class Test::Unit::TestCase
     lines = (doc/:tvalueamortizationschedule/:amortizationline)
     lines.each do |line|
       if line.search(:amortizationlinetype).innerHTML == '9'
-        payment = line.search(:payment1amount).innerHTML.gsub(/(\d{2})\d{2}$/, '.\1')
-        interest_paid = line.search(:interestpaid).innerHTML.gsub(/(\d{2})\d{2}$/, '.\1')
-        principal_paid = line.search(:principalpaid).innerHTML.gsub(/(\d{2})\d{2}$/, '.\1')
+        payment           = line.search(:payment1amount).innerHTML.gsub(/(\d{2})\d{2}$/, '.\1')
+        interest_paid     = line.search(:interestpaid).innerHTML.gsub(/(\d{2})\d{2}$/, '.\1')
+        principal_paid    = line.search(:principalpaid).innerHTML.gsub(/(\d{2})\d{2}$/, '.\1')
         principal_balance = line.search(:principalbalance).innerHTML.gsub(/(\d{2})\d{2}$/, '.\1')
+        
         control_schedule << Struct::Payment.new(nil, payment, principal_paid, interest_paid, principal_balance)
       end
     end

@@ -7,7 +7,7 @@ class Stater::TVMTest < Test::Unit::TestCase
     periodic_rate = 0.04 / 12
     periods = 84
     
-    assert_equal '7935.08318331367', Stater::TVM.fv(present_value, periodic_rate, periods).to_s
+    assert_equal '7935.08318331367', Stater::TVM.fv(present_value, 0.04, 7, 12).to_s
   end
   
   def test_present_value
@@ -15,7 +15,7 @@ class Stater::TVMTest < Test::Unit::TestCase
     periodic_rate = 0.04 / 12
     periods = 84
     
-    assert_equal '5999.99759298276', Stater::TVM.pv(future_value, periodic_rate, periods).to_s
+    assert_equal '5999.99759298276', Stater::TVM.pv(future_value, 0.04, 7, 12).to_s
   end
   
   def test_interest

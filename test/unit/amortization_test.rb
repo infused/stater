@@ -38,7 +38,7 @@ class Stater::AmortizationTest < Test::Unit::TestCase
     assert_equal periods, amortization.periods
     
     # Compare to TValue schedules - they should match exactly
-    assert_schedule('./../fixtures/FEC_example_3_3_1.xml', amortization.schedule)
+    assert_schedule(File.dirname(__FILE__) + "/../fixtures/FEC_example_3_3_1.xml", amortization.schedule)
   end
   
 end
