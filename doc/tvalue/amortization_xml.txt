@@ -1,0 +1,2 @@
+AmortizationLineType 8 = Loan
+AmortizationLineType 9 = Payment

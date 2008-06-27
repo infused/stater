@@ -15,7 +15,7 @@ class Stater::AmortizationTest < Test::Unit::TestCase
     periodic_rate = 0.08 / 12
     periods = 15 * 12
     
-    amortization = Stater::Amortization.new(250000.00, periodic_rate, periods)
+    amortization = Stater::Amortization.new(principal, periodic_rate, periods)
     
     assert_kind_of BigDecimal, amortization.calculate_payment
     assert_equal BigDecimal('2389.13'), amortization.calculate_payment
