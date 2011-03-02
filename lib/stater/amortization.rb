@@ -24,12 +24,9 @@ module Stater
     end
     
     # Calculates the payment when given the principal amount and interest rate
-    def calculate_payment(periodic_rate = @periodic_rate, periods = @periods)
-      raise ArgumentError, "periodic_rate should be a BigDecimal" unless periodic_rate.is_a?(BigDecimal)
-      raise ArgumentError, "periods should be a Fixnum" unless periods.is_a?(Fixnum)
-      
-      x = periodic_rate * principal * ((1 + periodic_rate)**periods)
-      y = ((1 + periodic_rate)**periods) - 1      
+    def calculate_payment      
+      x = @periodic_rate * @principal * ((1 + @periodic_rate)**@periods)
+      y = ((1 + @periodic_rate)**@periods) - 1      
       (x / y).round(2)
     end
     
