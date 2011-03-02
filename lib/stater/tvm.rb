@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Stater
   class TVM
     include Math

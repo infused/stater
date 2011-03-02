@@ -1,6 +1,6 @@
 $:.unshift(File.dirname(__FILE__) + '/../lib/')
 require 'rubygems'
-require 'spec'
+require 'rspec'
 require 'stater'
 require 'hpricot'
 
@@ -26,8 +26,7 @@ module CustomMatchers
   end
 end
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.include(CustomMatchers)
-  config.mock_with :mocha
 end
 

@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Stater::Amortization, 'when initialized' do
   
-  before(:each) do 
+  before do 
     @amortization = Stater::Amortization.new
   end
   
@@ -25,7 +25,7 @@ describe Stater::Amortization, 'when initialized' do
 end
 
 describe Stater::Amortization do
-  before(:each) do
+  before do
     principal     = 250000.00
     periodic_rate = 0.08 / 12
     periods       = 15 * 12
@@ -51,7 +51,7 @@ describe Stater::Amortization do
 end
 
 describe Stater::Amortization, 'schedule' do
-  before(:each) do
+  before do
     principal     = 250000.00
     periodic_rate = 0.08 / 12
     periods       = 15 * 12

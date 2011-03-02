@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 Struct.new('Payment', :number, :payment, :principal_paid, :interest_paid, :principal_balance)
 
 class NilClass
