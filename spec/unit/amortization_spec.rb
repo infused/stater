@@ -47,11 +47,18 @@ describe Stater::Amortization do
     end
   end
   
-end
-
-describe Stater::Amortization, 'schedule' do
-  it 'should exactly match the TValue control schedule'
-  # it 'should exactly match the TValue control schedule' do
-  #   @amortization.schedule.size.should == tvalue_schedule('FEC_example_3_3_1.xml').size
-  # end
+  describe 'schedule' do
+    it 'should exactly match the TValue control schedule' do
+      @tvalue_schedule = tvalue_schedule('FEC_example_3_3_1.xml')
+      # @amortization.schedule.size.should == @tvalue_schedule.size
+      @amortization.schedule[0].should == @tvalue_schedule[0]
+      @amortization.schedule[1].should == @tvalue_schedule[1]
+      @amortization.schedule[25].should == @tvalue_schedule[25]
+      @amortization.schedule[70].should == @tvalue_schedule[70]
+      @amortization.schedule[150].should == @tvalue_schedule[150]
+      @amortization.schedule[179].should == @tvalue_schedule[179]
+      # @amortization.schedule[180].should == @tvalue_schedule[180]
+    end
+  end
+  
 end

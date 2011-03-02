@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Struct.new('Payment', :number, :payment, :principal_paid, :interest_paid, :principal_balance)
+Struct.new('Payment', :payment, :principal_paid, :interest_paid, :principal_balance)
 
 class NilClass
   def to_d
@@ -42,8 +42,9 @@ module Stater
         principal_paid = payment - interest_paid
         principal_balance = principal_balance - principal_paid
         
-        payments << Struct::Payment.new(payment_number, payment, principal_paid, interest_paid, principal_balance)
+        payments << Struct::Payment.new(payment, principal_paid, interest_paid, principal_balance)
       end
+      
       payments
     end
     
