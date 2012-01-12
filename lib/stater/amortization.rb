@@ -8,12 +8,8 @@ class NilClass
   end
 end
 
-# TODO: test that this actually works
-# BigDecimal.mode(BigDecimal::ROUND_HALF_EVEN)
-
 module Stater
   class Amortization
-    
     attr_accessor :principal
     attr_accessor :periodic_rate
     attr_accessor :periods
@@ -31,12 +27,12 @@ module Stater
     end
     
     def schedule
-      return [] if @principal.nil? or @periodic_rate.nil? or @periods.nil?
+      return [] unless @principal && @periodic_rate && @periods
       
-      payments = []
       payment = calculate_payment
       principal_balance = @principal
-
+      
+      payments = []
       1.upto(@periods) do |payment_number|
         interest_paid = (principal_balance * @periodic_rate).round(2)
         principal_paid = payment - interest_paid
@@ -44,7 +40,6 @@ module Stater
         
         payments << Struct::Payment.new(payment, principal_paid, interest_paid, principal_balance)
       end
-      
       payments
     end
     
