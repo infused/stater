@@ -19,9 +19,9 @@ Gem::Specification.new do |s|
   s.test_files = Dir.glob('spec/**/*_spec.rb')
   s.require_paths = ['lib']
 
-  s.required_rubygems_version = '>= 1.3.0'
+  s.required_rubygems_version = '>= 1.8.0'
   s.add_development_dependency 'rake', '~> 0.9.2'
-  s.add_development_dependency 'rspec', '~> 2.8.0'
+  s.add_development_dependency 'rspec', '~> 2.11.0'
   s.add_development_dependency 'nokogiri', '~> 1.5.0'
 end
 
