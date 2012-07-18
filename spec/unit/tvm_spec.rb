@@ -12,25 +12,29 @@ describe Stater::TVM do
   
   describe 'future_value' do
     it "should calculate future value" do
-      Stater::TVM.fv(@present_value, @interest, @years, @periods_per_year).should be_within(@delta).of(@future_value)
+      fv = Stater::TVM.fv(@present_value, @interest, @years, @periods_per_year)
+      fv.should be_within(@delta).of(@future_value)
     end    
   end
   
   describe 'present_value' do
     it "should calculate present value" do
-      Stater::TVM.pv(@future_value, @interest, @years, @periods_per_year).should be_within(@delta).of(@present_value)
+      pv = Stater::TVM.pv(@future_value, @interest, @years, @periods_per_year)
+      pv.should be_within(@delta).of(@present_value)
     end
   end
 
   describe 'interest' do
     it "should calculate interest" do
-      Stater::TVM.interest(@present_value, @future_value, @years, @periods_per_year).to_f.should be_within(@delta).of(@interest)
+      interest = Stater::TVM.interest(@present_value, @future_value, @years, @periods_per_year).to_f
+      interest.should be_within(@delta).of(@interest)
     end
   end
   
   describe 'years' do
     it "should caculate years" do
-      Stater::TVM.years(@present_value, @future_value, @interest, @periods_per_year).should be_within(@delta).of(@years)
+      years = Stater::TVM.years(@present_value, @future_value, @interest, @periods_per_year)
+      years.should be_within(@delta).of(@years)
     end
   end
   
