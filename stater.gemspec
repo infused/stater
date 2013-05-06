@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/infused/stater'
   s.summary = 'Time Value of Money calulations'
   s.description = 'Time Value of Money calulations'
-  
+
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md', 'MIT-LICENSE']
   s.files = Dir['[A-Z]*', '{doc,lib,spec}/**/*']
@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.required_rubygems_version = '>= 1.8.0'
-  s.add_development_dependency 'rake', '~> 0.9.2'
-  s.add_development_dependency 'rspec', '~> 2.11.0'
-  s.add_development_dependency 'nokogiri', '~> 1.5.0'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'nokogiri'
 end
 
