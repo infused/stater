@@ -9,60 +9,66 @@ describe Stater::TVM do
     @periods_per_year = 12
     @delta            = 0.005
   end
-  
+
   describe 'future_value' do
-    it "should calculate future value" do
+    it 'calculates future value' do
       fv = Stater::TVM.fv(@present_value, @interest, @years, @periods_per_year)
-      fv.should be_within(@delta).of(@future_value)
-    end    
+      expect(fv).to be_within(@delta).of(@future_value)
+    end
+
     it "defaults to 12 periods per year" do
       fv = Stater::TVM.fv(@present_value, @interest, @years)
       expect(fv).to be_within(@delta).of(@future_value)
     end
   end
-  
+
   describe 'present_value' do
-    it "should calculate present value" do
-      pv = Stater::TVM.pv(@future_value, @interest, @years, @periods_per_year)
-      pv.should be_within(@delta).of(@present_value)
+    let(:pv) { Stater::TVM.pv(@future_value, @interest, @years, @periods_per_year) }
+
+    it 'calculates present value' do
+      expect(pv).to be_within(@delta).of(@present_value)
     end
   end
 
   describe 'interest' do
-    it "should calculate interest" do
-      interest = Stater::TVM.interest(@present_value, @future_value, @years, @periods_per_year).to_f
-      interest.should be_within(@delta).of(@interest)
+    let(:interest) { Stater::TVM.interest(@present_value, @future_value, @years, @periods_per_year).to_f }
+
+    it 'calculates interest' do
+      expect(interest).to be_within(@delta).of(@interest)
     end
   end
-  
+
   describe 'years' do
-    it "should caculate years" do
-      years = Stater::TVM.years(@present_value, @future_value, @interest, @periods_per_year)
-      years.should be_within(@delta).of(@years)
+    let(:years) { Stater::TVM.years(@present_value, @future_value, @interest, @periods_per_year) }
+
+    it 'caculates years' do
+      expect(years).to be_within(@delta).of(@years)
     end
   end
-  
+
   describe 'i_to_apr' do
-    it "should convert simple interest to APR" do
-      Stater::TVM.i_to_apr(0.18, 12).should be_within(@delta).of(0.195)
+    it 'should convert simple interest to APR' do
+      expect(Stater::TVM.i_to_apr(0.18, 12)).to be_within(@delta).of(0.195)
     end
   end
-  
+
   describe 'apr_to_i' do
-    it "should convert APR to simple interest" do
-      Stater::TVM.apr_to_i(0.195, 12).should be_within(@delta).of(0.179)
+    it 'should convert APR to simple interest' do
+      expect(Stater::TVM.apr_to_i(0.195, 12)).to be_within(@delta).of(0.179)
     end
   end
-  
+
   describe 'apr_to_ear' do
-    it "should convert APR to EAR" do
-       Stater::TVM.apr_to_ear(0.129, 12).should be_within(@delta).of(0.137)
+    it 'should convert APR to EAR' do
+       expect(Stater::TVM.apr_to_ear(0.129, 12)).to be_within(@delta).of(0.137)
     end
   end
-  
+
   describe 'ear_to_apr' do
-    it "should convert EAR to APR" do
-      Stater::TVM.ear_to_apr(0.138, 12).should be_within(@delta).of(0.129)
+    let(:apr) { Stater::TVM.ear_to_apr(0.138, 12) }
+
+    it 'should convert EAR to APR' do
+      expect(apr).to be_within(@delta).of(0.129)
     end
   end
 end
