@@ -8,7 +8,7 @@ module Stater
       #   i = simple interest rate
       #   n = number of years
       #   m = compounding periods per year
-      def fv(pv, i, n, m)
+      def fv(pv, i, n, m = 12)
         pv * (1 + (i/m)) ** (n*m)
       end
 

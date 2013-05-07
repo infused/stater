@@ -15,6 +15,10 @@ describe Stater::TVM do
       fv = Stater::TVM.fv(@present_value, @interest, @years, @periods_per_year)
       fv.should be_within(@delta).of(@future_value)
     end    
+    it "defaults to 12 periods per year" do
+      fv = Stater::TVM.fv(@present_value, @interest, @years)
+      expect(fv).to be_within(@delta).of(@future_value)
+    end
   end
   
   describe 'present_value' do
