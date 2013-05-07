@@ -4,8 +4,6 @@ require 'rspec'
 require 'stater'
 require 'nokogiri'
 
-FIXTURE_PATH = File.dirname(__FILE__) + '/fixtures' unless defined?(DB_PATH)
-
 module CustomMatchers
   def tvalue_schedule(xml_file)
     control_schedule = []
@@ -17,14 +15,14 @@ module CustomMatchers
         interest_paid = extract_value(line, :interestpaid).to_d
         principal_paid = extract_value(line, :principalpaid).to_d
         principal_balance = extract_value(line, :principalbalance).to_d
-        
+
         control_schedule << Struct::Payment.new(payment, principal_paid, interest_paid, principal_balance)
       end
     end
-    
+
     control_schedule
   end
-  
+
   def extract_value(line, name)
     (line/name.to_sym).inner_text.gsub(/(\d{2})\d{2}$/, '.\1')
   end
