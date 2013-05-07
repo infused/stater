@@ -26,38 +26,37 @@ describe Stater::Amortization do
   end
 
   describe 'when initialized with default parameters' do
-    before do
-      @amortization = Stater::Amortization.new
+    let(:amortization) { Stater::Amortization.new }
+
+    it 'is an empty array' do
+      expect(amortization.schedule).to eq []
     end
 
-    specify 'schedule should be an empty array' do
-      @amortization.schedule.should == []
+    specify 'principal is nil' do
+      expect(amortization.principal).to be_nil
     end
 
-    specify 'principal should be nil' do
-      @amortization.principal.should be_nil
+    specify 'periodic_rate is nil' do
+      expect(amortization.periodic_rate).to be_nil
     end
 
-    specify 'periodic_rate should be nil' do
-      @amortization.periodic_rate.should be_nil
-    end
-
-    specify 'periods should be nil' do
-      @amortization.periods.should be_nil
+    specify 'periods is nil' do
+      expect(amortization.periods).to be_nil
     end
   end
 
   describe 'schedule' do
+    let(:tvalue_schedule) { load_tvalue_schedule('FEC_example_3_3_1.xml') }
+
     it 'should exactly match the TValue control schedule' do
-      @tvalue_schedule = tvalue_schedule('FEC_example_3_3_1.xml')
-      # @amortization.schedule.size.should == @tvalue_schedule.size
-      @amortization.schedule[0].should == @tvalue_schedule[0]
-      @amortization.schedule[1].should == @tvalue_schedule[1]
-      @amortization.schedule[25].should == @tvalue_schedule[25]
-      @amortization.schedule[70].should == @tvalue_schedule[70]
-      @amortization.schedule[150].should == @tvalue_schedule[150]
-      @amortization.schedule[179].should == @tvalue_schedule[179]
-      # @amortization.schedule[180].should == @tvalue_schedule[180]
+      # @amortization.schedule.size.should eq @tvalue_schedule.size
+      expect(@amortization.schedule[0]).to eq tvalue_schedule[0]
+      expect(@amortization.schedule[1]).to eq tvalue_schedule[1]
+      expect(@amortization.schedule[25]).to eq tvalue_schedule[25]
+      expect(@amortization.schedule[70]).to eq tvalue_schedule[70]
+      expect(@amortization.schedule[150]).to eq tvalue_schedule[150]
+      expect(@amortization.schedule[179]).to eq tvalue_schedule[179]
+      # @amortization.schedule[180].should eq @tvalue_schedule[180]
     end
   end
 

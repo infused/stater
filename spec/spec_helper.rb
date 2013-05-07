@@ -5,7 +5,7 @@ require 'stater'
 require 'nokogiri'
 
 module CustomMatchers
-  def tvalue_schedule(xml_file)
+  def load_tvalue_schedule(xml_file)
     control_schedule = []
     doc = Nokogiri(open(File.dirname(__FILE__) + "/fixtures/tvalue_schedules/#{xml_file}"))
 
