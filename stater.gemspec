@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir['[A-Z]*', '{doc,lib,spec}/**/*']
   s.test_files = Dir.glob('spec/**/*_spec.rb')
   s.require_paths = ['lib']
+  s.license = 'MIT'
 
   s.required_rubygems_version = '>= 1.8.0'
   s.add_development_dependency 'rake'
