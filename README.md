@@ -6,4 +6,4 @@
 
 A time value of money library
 
-Copyright (c) 2006-2017 Keith Morrison <keithm@infused.org>
+Copyright (c) 2006-2018 Keith Morrison <keithm@infused.org>
