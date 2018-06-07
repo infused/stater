@@ -3,10 +3,7 @@ branches:
     - master
 language: ruby
 rvm:
-  - 2.1.10
-  - 2.2.6
-  - 2.3.3
-  - 2.4.0
-  - jruby-19mode
+  - 2.4.4
+  - 2.5.1
 script: bundle exec rspec
 sudo: false
